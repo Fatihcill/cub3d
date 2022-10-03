@@ -1,0 +1,15 @@
+NO ./textures/water.xpm
+SO ./textures/water.xpm
+WE ./textures/water.xpm
+EA ./textures/water.xpm
+
+F 00,100,0
+C 05,30,0
+
+111111111
+110000001
+  1111S0011
+111100111
+1110001
+1111111
+

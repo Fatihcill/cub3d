@@ -6,7 +6,7 @@
 #    By: fcil <fcil@student.42.fr>                  +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/07/10 21:28:18 by fcil              #+#    #+#              #
-#    Updated: 2022/09/28 12:13:29 by fcil             ###   ########.fr        #
+#    Updated: 2022/10/03 04:55:23 by fcil             ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -27,7 +27,7 @@ endif
 
 NAME		= cub3D
 SRC_DIR	 = src
-SRCS		= $(wildcard $(SRC_DIR)/*.c)
+SRCS		:= $(shell find $(SRC_DIR) -type f -name "*.c")
 OBJS		= $(SRCS:.c=.o)
 FT		= ./libft/
 FT_LIB	= ./libft/libft.a
@@ -39,7 +39,7 @@ all: $(NAME)
 	$(CC) $(CFLAGS) -c $< -o $@
 
 $(NAME): $(FT_LIB) $(MINILIBX) $(OBJS)
-	$(CC) $(OBJS) $(FT_LIB) -o $(NAME) $(LFLAGS)
+	$(CC) $(OBJS) -lm $(FT_LIB) -o $(NAME) $(LFLAGS)
 
 $(MINILIBX):
 	@make -C $(MLX)
