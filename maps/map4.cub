@@ -1,7 +1,7 @@
-NO ./textures/water.xpm
-SO ./textures/water.xpm
-WE ./textures/water.xpm
-EA ./textures/water.xpm
+NO ./textures/brick.xpm
+SO ./textures/blue.xpm
+WE ./textures/wood.xpm
+EA ./textures/grey.xpm
 
 F 00,100,0
 C 05,30,0

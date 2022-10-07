@@ -6,7 +6,7 @@
 /*   By: fcil <fcil@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/26 18:33:28 by fcil              #+#    #+#             */
-/*   Updated: 2022/10/03 04:56:20 by fcil             ###   ########.fr       */
+/*   Updated: 2022/10/07 05:35:51 by fcil             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,11 +70,12 @@ char	*get_next_line(int fd)
 	}
 	while (check > 0)
 	{
+		if (buffer == '\n')
+			return (line);
 		line = str_append_chr(line, buffer);
 		if (line == NULL)
 			return (NULL);
-		if (buffer == '\n')
-			return (line);
+
 		check = read(fd, &buffer, 1);
 	}
 	return (line);

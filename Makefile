@@ -6,7 +6,7 @@
 #    By: fcil <fcil@student.42.fr>                  +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/07/10 21:28:18 by fcil              #+#    #+#              #
-#    Updated: 2022/10/03 04:55:23 by fcil             ###   ########.fr        #
+#    Updated: 2022/10/07 05:29:55 by fcil             ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -31,7 +31,7 @@ SRCS		:= $(shell find $(SRC_DIR) -type f -name "*.c")
 OBJS		= $(SRCS:.c=.o)
 FT		= ./libft/
 FT_LIB	= ./libft/libft.a
-CFLAGS	  = -I./include -I $(MLX) -I $(FT)
+CFLAGS	  = -I./include -I $(MLX) -I $(FT) -ggdb
 
 all: $(NAME)
 

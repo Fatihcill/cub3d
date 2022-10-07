@@ -1,7 +1,7 @@
-NO ./textures/walls/n.xpm
-SO ./textures/walls/s.xpm
-WE ./textures/walls/w.xpm
-EA ./textures/walls/e.xpm
+NO ./textures/brick.xpm
+SO ./textures/blue.xpm
+WE ./textures/wood.xpm
+EA ./textures/grey.xpm
 
 F 86,125,70
 C 132,206,235

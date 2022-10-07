@@ -6,60 +6,73 @@
 /*   By: fcil <fcil@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/10 20:50:50 by fcil              #+#    #+#             */
-/*   Updated: 2022/10/03 04:49:05 by fcil             ###   ########.fr       */
+/*   Updated: 2022/10/07 05:14:18 by fcil             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
 
-int		ft_extcheck(char *str, char *ext)
+int		ft_cubed(t_all data, char *strmap)
 {
-	int		i;
-	char	*strext;
-	
-	i = ft_strlen(str);
-	if (i > 4)
-	{
-		strext = &str[i - 4];
-		if (!ft_strncmp(strext, ext, 4))
-			return (1);
-	}
-	return (0);
+	data.mlx = mlx_init();
+	ft_parse(&data, strmap);
+	// ft_rotate(&s, 1);
+	// ft_move(&s, 1);
+	// ft_rotate(&s, -1);
+	// ft_move(&s, -1);
+	// s.win.ptr = mlx_new_window(s.mlx.ptr, s.win.x, s.win.y, "cub3D");
+	// ft_draw(&s);
+	// mlx_hook(s.win.ptr, 2, 1, ft_key, &s);
+	// mlx_hook(s.win.ptr, 17, 0, ft_close, &s);
+	// mlx_loop(s.mlx.ptr);
+	return (1);
+}
+
+void	ft_init2(t_all data, char *strmap)
+{
+	t_map	map;
+	t_tex	tex;
+	t_stk	*stk;
+
+	map.tab = NULL;
+	tex.n = NULL;
+	tex.s = NULL;
+	tex.e = NULL;
+	tex.w = NULL;
+	tex.i = NULL;
+	stk = NULL;
+	map.x = 0;
+	map.y = 0;
+	tex.c = NONE;
+	tex.f = NONE;
+	data.map = map;
+	data.tex = tex;
+	data.stk = stk;
+	ft_cubed(data, strmap);
 }
 
 void	ft_init(char *strmap)
 {
-	t_all	main;
+	t_all	data;
 	t_win	win;
 	t_img	img;
-	t_map	map;
-	t_pos	pos;
+	t_dir	dir;
 
-	pos.x = 0;
-	pos.y = 0;
-	map.spr = 0;
-	map.tab = 0;
-	map.x = 0;
-	map.y = 0;
 	win.ptr = NULL;
-	win.x = 0;
-	win.y = 0;
 	img.ptr = NULL;
 	img.adr = NULL;
-	main.img = img;
-	main.map = map;
-	main.mlx = NULL;
-	main.pos = pos;
-	main.win = win;
-	ft_cubed(main, strmap);
-}
-
-int		ft_cubed(t_all main, char *map)
-{
-	t_pos	pos;
-
-	main.mlx = mlx_init();
-	ft_parse(&main, map);
+	win.x = 0;
+	win.y = 0;
+	img.fsh = 0;
+	dir.x = 0;
+	dir.y = 0;
+	data.mlx = NULL;
+	data.pos_x = 0;
+	data.pos_y = 0;
+	data.win = win;
+	data.img = img;
+	data.dir = dir;
+	ft_init2(data, strmap);
 }
 
 int	main(int ac, char **av)
