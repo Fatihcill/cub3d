@@ -6,25 +6,57 @@
 /*   By: fcil <fcil@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/10 20:50:50 by fcil              #+#    #+#             */
-/*   Updated: 2022/10/07 05:14:18 by fcil             ###   ########.fr       */
+/*   Updated: 2022/10/08 16:44:17 by fcil             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
 
+void	ft_draw(t_all *data)
+{
+	t_ray	ray;
+	t_hit	hit;
+
+	ray.x = 0;
+	ray.y = 0;
+	ray.i = 0;
+	ray.v = 0;
+	ray.w = 0;
+	hit.x = 0;
+	hit.y = 0;
+	hit.d = 0;
+	data->ray = ray;
+	data->hit = hit;
+	//ft_screen(s);
+	draw_minimap(data);
+	//mlx_put_image_to_window(data->mlx, data->win.ptr, data->img.ptr, 0, 0);
+	mlx_put_image_to_window(data->mlx, data->win.ptr, data->minimap.img.ptr, 0, 0);
+	//free(s->img.ptr);
+	printf("\n%f %f\n", data->pos_x, data->pos_y);
+	//free(s->img.adr);
+}
+
 int		ft_cubed(t_all data, char *strmap)
 {
 	data.mlx = mlx_init();
 	ft_parse(&data, strmap);
-	// ft_rotate(&s, 1);
-	// ft_move(&s, 1);
-	// ft_rotate(&s, -1);
-	// ft_move(&s, -1);
-	// s.win.ptr = mlx_new_window(s.mlx.ptr, s.win.x, s.win.y, "cub3D");
-	// ft_draw(&s);
-	// mlx_hook(s.win.ptr, 2, 1, ft_key, &s);
-	// mlx_hook(s.win.ptr, 17, 0, ft_close, &s);
-	// mlx_loop(s.mlx.ptr);
+
+	for (size_t i = 0; data.map.tab[i]; i++)
+	{
+		printf("%s\n",data.map.tab[i]);
+	}
+	
+	ft_rotate(&data, 1); //TODO: log 
+	ft_move(&data, 1);
+	ft_rotate(&data, -1);
+	ft_move(&data, -1);
+	printf("%d, %d", data.win.x, data.win.y);
+	data.win.ptr = mlx_new_window(data.mlx, data.win.x, data.win.y, "cub3D");
+	printf("%d, %d\n", data.map.x, data.map.y);
+	ft_draw(&data);
+	mlx_hook(data.win.ptr, 2, 1, ft_key, &data);
+	mlx_hook(data.win.ptr, 17, 0, ft_close, &data);
+	mlx_loop(data.mlx);
 	return (1);
 }
 
@@ -42,7 +74,7 @@ void	ft_init2(t_all data, char *strmap)
 	tex.i = NULL;
 	stk = NULL;
 	map.x = 0;
-	map.y = 0;
+	map.y = 0;//
 	tex.c = NONE;
 	tex.f = NONE;
 	data.map = map;
@@ -53,25 +85,29 @@ void	ft_init2(t_all data, char *strmap)
 
 void	ft_init(char *strmap)
 {
-	t_all	data;
-	t_win	win;
-	t_img	img;
-	t_dir	dir;
+	t_all		data;
+	t_win		win;
+	t_img		img;
+	t_dir		dir;
+	t_minimap	minimap;
 
 	win.ptr = NULL;
 	img.ptr = NULL;
 	img.adr = NULL;
-	win.x = 0;
-	win.y = 0;
+	win.x = SIZE_X;
+	win.y = SIZE_Y;
 	img.fsh = 0;
 	dir.x = 0;
 	dir.y = 0;
+	minimap.img = img;
+	minimap.map_size = 10;
 	data.mlx = NULL;
 	data.pos_x = 0;
 	data.pos_y = 0;
 	data.win = win;
 	data.img = img;
 	data.dir = dir;
+	data.minimap = minimap;
 	ft_init2(data, strmap);
 }
 

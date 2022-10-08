@@ -6,7 +6,7 @@
 /*   By: fcil <fcil@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/07 02:53:34 by fcil              #+#    #+#             */
-/*   Updated: 2022/10/07 05:05:56 by fcil             ###   ########.fr       */
+/*   Updated: 2022/10/08 14:19:05 by fcil             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,8 +29,8 @@ int		ft_slablen(t_all *data, char *line)
 			count++;
 		i++;
 	}
-	if (data->map.x != 0 && data->map.x != count)
-		return (-1);
+	if (count > data->map.x)
+		data->map.x = count;
 	return (count);
 }
 
@@ -74,8 +74,6 @@ void		ft_map(t_all *data, char *line, int *i)
 		error("Error : Invalid map");
 	}
 	tmp[data->map.y + 1] = NULL;
-	if (data->map.y > 0)
-		free(data->map.tab);
 	data->map.tab = tmp;
 	data->map.y++;
 }

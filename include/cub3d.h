@@ -6,7 +6,7 @@
 /*   By: fcil <fcil@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/10 20:51:11 by fcil              #+#    #+#             */
-/*   Updated: 2022/10/07 05:34:50 by fcil             ###   ########.fr       */
+/*   Updated: 2022/10/08 16:44:11 by fcil             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,13 +18,15 @@
 # include "stdio.h"
 # include "fcntl.h"
 # include "keys.h"
+# include <math.h>
 
-# define SIZE_X 1000.0
-# define SIZE_Y 1000.0
+# define SIZE_X 1080
+# define SIZE_Y 720
 
 # define NONE 0xFF000000
 # define WHITE 0x00FFFFFF
 # define BLACK 0x00000000
+# define GRAY 0x3B3B3B
 # define RED 0x00FF0000
 # define GREEN 0x0000FF00
 # define BLUE 0x000000FF
@@ -94,6 +96,14 @@ typedef struct	s_stk
 	double			d;
 }				t_stk;
 
+typedef struct	s_minimap
+{
+	t_img			img;
+	int				width;
+	int				height;
+	int				map_size;
+}				t_minimap;
+
 typedef struct	s_all
 {
 	double			pos_x;
@@ -106,8 +116,11 @@ typedef struct	s_all
 	t_dir			dir;
 	t_ray			ray;
 	t_hit			hit;
+	t_minimap		minimap;
 	t_stk			*stk;
 }				t_all;
+
+void	ft_draw(t_all *data);
 
 //read_files.c
 void		ft_parse(t_all *data, char *strmap);
@@ -131,5 +144,14 @@ void		ft_pos(t_all *data);
 //parse_texture.c
 void		ft_texture(t_all *data, unsigned int **adr, char *line, int *i);
 void		ft_colors(unsigned int *color, char *line, int *i);
+
+//key.c
+void		ft_rotate(t_all *s, double c);
+void		ft_move(t_all *data, double c);
+int			ft_close(t_all *data, int win);
+int			ft_key(int key, void *arg);
+
+//minimap.c
+void		draw_minimap(t_all *data);
 
 #endif
