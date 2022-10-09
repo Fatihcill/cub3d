@@ -6,23 +6,13 @@
 /*   By: fcil <fcil@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/26 18:33:28 by fcil              #+#    #+#             */
-/*   Updated: 2022/10/07 05:35:51 by fcil             ###   ########.fr       */
+/*   Updated: 2022/10/09 17:02:20 by fcil             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
 
-char	*str_append_str(char *str, char *append)
-{
-	char	*tmp;
-
-	tmp = str;
-	str = ft_strjoin(str, append);
-	free(tmp);
-	return (str);
-}
-
-char	*str_append_chr(char *str, char append)
+static char	*str_append_chr(char *str, char append)
 {
 	char	*new_str;
 	int		i;
@@ -43,14 +33,6 @@ char	*str_append_chr(char *str, char append)
 	}
 	free(str);
 	return (new_str);
-}
-
-char	str_last_chr(char *str)
-{
-	if (str[0] != '\0')
-		return (str[ft_strlen(str) - 1]);
-	else
-		return ('\0');
 }
 
 char	*get_next_line(int fd)
@@ -75,7 +57,6 @@ char	*get_next_line(int fd)
 		line = str_append_chr(line, buffer);
 		if (line == NULL)
 			return (NULL);
-
 		check = read(fd, &buffer, 1);
 	}
 	return (line);

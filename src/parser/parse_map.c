@@ -6,13 +6,13 @@
 /*   By: fcil <fcil@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/07 02:53:34 by fcil              #+#    #+#             */
-/*   Updated: 2022/10/09 14:10:55 by fcil             ###   ########.fr       */
+/*   Updated: 2022/10/09 17:51:19 by fcil             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
 
-int		ft_slablen(t_all *data, char *line)
+static int	ft_slablen(t_all *data, char *line)
 {
 	int	i;
 	int	count;
@@ -34,7 +34,7 @@ int		ft_slablen(t_all *data, char *line)
 	return (count);
 }
 
-char	*ft_slab(t_all *data, char *line, int *i)
+static char	*ft_slab(t_all *data, char *line, int *i)
 {
 	char	*slab;
 	int		j;
@@ -44,9 +44,10 @@ char	*ft_slab(t_all *data, char *line, int *i)
 		error("Error : Malloc fail (map table)");
 	j = 0;
 	while (line[*i] != '\0')
-	{
+	{		
 		if ((line[*i] == '0' || line[*i] == '1' || line[*i] == 'N')
-			|| (line[*i] == 'E' || line[*i] == 'S' || line[*i] == 'W' || line[*i] == ' '))
+			|| (line[*i] == 'E' || line[*i] == 'S'
+				|| line[*i] == 'W' || line[*i] == ' '))
 			slab[j++] = line[*i];
 		else
 			error("Error : Map parse Error");
@@ -56,7 +57,7 @@ char	*ft_slab(t_all *data, char *line, int *i)
 	return (slab);
 }
 
-void		ft_map(t_all *data, char *line, int *i)
+void	ft_map(t_all *data, char *line, int *i)
 {
 	char	**tmp;
 	int		j;
@@ -78,6 +79,25 @@ void		ft_map(t_all *data, char *line, int *i)
 	data->map.y++;
 }
 
+static void	ft_set_pos(t_all *data, int i, int j, char c)
+{
+	if (data->pos_y == 0)
+	{	
+		data->pos_y = (double)i + 0.5;
+		data->pos_x = (double)j + 0.5;
+		if (c == 'E')
+			data->dir.x = 1;
+		else if (c == 'W')
+			data->dir.x = -1;
+		else if (c == 'S')
+			data->dir.y = 1;
+		else if (c == 'N')
+			data->dir.y = -1;
+		return ;
+	}
+	error("Multiple starting positions");
+}
+
 void	ft_pos(t_all *data)
 {
 	char	c;
@@ -92,18 +112,7 @@ void	ft_pos(t_all *data)
 		{
 			c = data->map.tab[i][j];
 			if (c == 'N' || c == 'E' || c == 'S' || c == 'W')
-			{
-				data->pos_y = (double)i + 0.5;
-				data->pos_x = (double)j + 0.5;
-				if (c == 'E')
-					data->dir.x = 1;
-				else if (c == 'W')
-					data->dir.x = -1;
-				else if (c == 'S')
-					data->dir.y = 1;
-				else if (c == 'N')
-					data->dir.y = -1;
-			}
+				ft_set_pos(data, i, j, c);
 		}
 		j = -1;
 	}

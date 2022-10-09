@@ -1,18 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   screen.c                                           :+:      :+:    :+:   */
+/*   ft_screen.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: fcil <fcil@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/09 04:29:12 by fcil              #+#    #+#             */
-/*   Updated: 2022/10/09 15:21:55 by fcil             ###   ########.fr       */
+/*   Updated: 2022/10/09 17:06:21 by fcil             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
 
-unsigned int	ft_pixel(t_all *s, double i)
+static unsigned int	ft_pixel(t_all *s, double i)
 {
 	int	index;
 
@@ -35,7 +35,7 @@ unsigned int	ft_pixel(t_all *s, double i)
 	return (BLACK);
 }
 
-void			ft_column(t_all *s, int size)
+static void	ft_column(t_all *s, int size)
 {
 	unsigned int	color;
 	int				start;
@@ -62,7 +62,7 @@ void			ft_column(t_all *s, int size)
 	s->ray.i -= s->win.x * s->win.y;
 }
 
-int				ft_size(t_all *s)
+static int	ft_size(t_all *s)
 {
 	double	correc;
 	double	fisheye;
@@ -73,7 +73,7 @@ int				ft_size(t_all *s)
 	return (round(s->win.y / correc));
 }
 
-void			ft_stock(t_all *s)
+static void	ft_stock(t_all *s)
 {
 	s->stk[s->ray.i].x = s->hit.x;
 	s->stk[s->ray.i].y = s->hit.y;

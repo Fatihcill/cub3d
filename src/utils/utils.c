@@ -6,28 +6,28 @@
 /*   By: fcil <fcil@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/03 04:44:35 by fcil              #+#    #+#             */
-/*   Updated: 2022/10/09 06:19:42 by fcil             ###   ########.fr       */
+/*   Updated: 2022/10/09 17:01:14 by fcil             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
 
-int		ft_extcheck(char *str, char *ext)
+int	ft_extcheck(char *str, char *ext)
 {
 	int		i;
 	char	*strext;
-	
+
 	i = ft_strlen(str);
 	if (i > 4)
 	{
-		strext = &str[i - 4];
+		strext = &str[i - ft_strlen(ext)];
 		if (!ft_strncmp(strext, ext, ft_strlen(ext)))
 			return (1);
 	}
 	return (0);
 }
 
-int		ft_spaceskip(char *line, int *i)
+int	ft_spaceskip(char *line, int *i)
 {
 	while (line[*i] <= ' ')
 		(*i)++;
@@ -40,7 +40,7 @@ void	error(char *str)
 	exit(EXIT_FAILURE);
 }
 
-int		ft_atoiskip(char *line, int *i)
+int	ft_atoiskip(char *line, int *i)
 {
 	int	num;
 
@@ -51,10 +51,10 @@ int		ft_atoiskip(char *line, int *i)
 		num = num * 10 + (line[*i] - 48);
 		(*i)++;
 	}
-	return(num);
+	return (num);
 }
 
-int		ft_close(t_all *data, int win)
+int	ft_close(t_all *data, int win)
 {
 	int	i;
 

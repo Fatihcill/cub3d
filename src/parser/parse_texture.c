@@ -6,13 +6,13 @@
 /*   By: fcil <fcil@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/07 04:33:15 by fcil              #+#    #+#             */
-/*   Updated: 2022/10/07 05:38:44 by fcil             ###   ########.fr       */
+/*   Updated: 2022/10/09 17:04:56 by fcil             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
 
-int		ft_xpm(t_all *data, unsigned int **adr, char *file)
+static int	ft_xpm(t_all *data, unsigned int **adr, char *file)
 {
 	int		fd;
 	void	*img;
@@ -32,7 +32,7 @@ int		ft_xpm(t_all *data, unsigned int **adr, char *file)
 	return (0);
 }
 
-void		ft_texture(t_all *data, unsigned int **adr, char *line, int *i)
+void	ft_texture(t_all *data, unsigned int **adr, char *line, int *i)
 {
 	char	*file;
 	int		j;
@@ -56,7 +56,7 @@ void		ft_texture(t_all *data, unsigned int **adr, char *line, int *i)
 	free(file);
 }
 
-void		ft_colors(unsigned int *color, char *line, int *i)
+void	ft_colors(unsigned int *color, char *line, int *i)
 {
 	int	r;
 	int	g;
@@ -71,7 +71,6 @@ void		ft_colors(unsigned int *color, char *line, int *i)
 	(*i)++;
 	b = ft_atoiskip(line, i);
 	ft_spaceskip(line, i);
-
 	if (r > 255 || g > 255 || b > 255)
 		error("Error : Invalid floor/ceiling color");
 	*color = r * 256 * 256 + g * 256 + b;

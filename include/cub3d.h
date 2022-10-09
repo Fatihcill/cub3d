@@ -6,7 +6,7 @@
 /*   By: fcil <fcil@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/10 20:51:11 by fcil              #+#    #+#             */
-/*   Updated: 2022/10/09 15:30:18 by fcil             ###   ########.fr       */
+/*   Updated: 2022/10/09 17:27:05 by fcil             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,28 +35,28 @@
 # define YELLOW 0x00FFFF00
 # define CYAN 0x0000FFFF
 
-typedef struct	s_win
+typedef struct s_win
 {
 	void			*ptr;
 	int				x;
 	int				y;
 }				t_win;
 
-typedef struct	s_img
+typedef struct s_img
 {
 	void			*ptr;
 	unsigned int	*adr;
 	int				fsh;
 }				t_img;
 
-typedef struct	s_map
+typedef struct s_map
 {
 	char			**tab;
 	int				x;
 	int				y;
 }				t_map;
 
-typedef struct	s_tex
+typedef struct s_tex
 {
 	unsigned int	*n;
 	unsigned int	*s;
@@ -67,14 +67,14 @@ typedef struct	s_tex
 	unsigned int	f;
 }				t_tex;
 
-typedef struct	s_dir
+typedef struct s_dir
 {
 	double			x;
 	double			y;
 	double			a;
 }				t_dir;
 
-typedef struct	s_ray
+typedef struct s_ray
 {
 	double			x;
 	double			y;
@@ -83,21 +83,21 @@ typedef struct	s_ray
 	double			w;
 }				t_ray;
 
-typedef struct	s_hit
+typedef struct s_hit
 {
 	double			x;
 	double			y;
 	double			d;
 }				t_hit;
 
-typedef struct	s_stk
+typedef struct s_stk
 {
 	double			x;
 	double			y;
 	double			d;
 }				t_stk;
 
-typedef struct	s_minimap
+typedef struct s_minimap
 {
 	t_img			img;
 	int				width;
@@ -105,7 +105,7 @@ typedef struct	s_minimap
 	int				map_size;
 }				t_minimap;
 
-typedef struct	s_all
+typedef struct s_all
 {
 	double			pos_x;
 	double			pos_y;
@@ -122,6 +122,9 @@ typedef struct	s_all
 	t_stk			*stk;
 }				t_all;
 
+//main.c
+void		init_minimap(t_all *data);
+
 //read_files.c
 void		ft_parse(t_all *data, char *strmap);
 
@@ -134,9 +137,6 @@ int			ft_close(t_all *data, int win);
 
 //get_next_line.c
 char		*get_next_line(int fd);
-char		*str_append_chr(char *str, char append);
-char		*str_append_str(char *str, char *append);
-char		str_last_chr(char *str);
 
 //parse_map.c
 void		ft_map(t_all *data, char *line, int *i);
@@ -153,20 +153,22 @@ int			ft_key_hold(int key, void *arg);
 int			ft_key_release(int key, void *arg);
 void		ft_rightleft(t_all *data, double c);
 
+//ft_draw_ray.c
+void		ft_init_ray(t_all *data);
+void		ft_ray(t_all *data);
+void		ft_dir(t_all *data);
+void		ft_ver(t_all *data);
+void		ft_hor(t_all *data);
+
 //minimap.c
-void		init_minimap(t_all *data);
 void		draw_rectangles(t_all *data);
-void 		draw_lines(t_all *data);
+void		draw_lines(t_all *data);
 void		draw_player(t_all *data);
 
 //ft_logic.c
 int			ft_logic(t_all *data);
 
 //ft_screen.c
-void			ft_ray(t_all *data);
-void			ft_dir(t_all *data);
-void			ft_ver(t_all *data);
-void			ft_hor(t_all *data);
-void			ft_screen(t_all *s);
+void		ft_screen(t_all *s);
 
 #endif
