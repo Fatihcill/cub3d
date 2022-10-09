@@ -6,7 +6,7 @@
 /*   By: fcil <fcil@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/03 05:13:04 by fcil              #+#    #+#             */
-/*   Updated: 2022/10/09 16:03:33 by fcil             ###   ########.fr       */
+/*   Updated: 2022/10/09 16:06:13 by fcil             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,7 +37,7 @@
 # endif
 
 # define TURN 0.05
-# define SPEED 60
+# define SPEED 10
 
 # define GO_RIGHT 1
 # define GO_LEFT 2
