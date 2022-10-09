@@ -6,7 +6,7 @@
 /*   By: fcil <fcil@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/03 04:44:35 by fcil              #+#    #+#             */
-/*   Updated: 2022/10/07 05:36:34 by fcil             ###   ########.fr       */
+/*   Updated: 2022/10/09 06:19:42 by fcil             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,4 +52,24 @@ int		ft_atoiskip(char *line, int *i)
 		(*i)++;
 	}
 	return(num);
+}
+
+int		ft_close(t_all *data, int win)
+{
+	int	i;
+
+	i = 0;
+	while (i < data->map.y)
+		free(data->map.tab[i++]);
+	free(data->map.tab);
+	free(data->tex.n);
+	free(data->tex.s);
+	free(data->tex.e);
+	free(data->tex.w);
+	free(data->tex.i);
+	if (win == 1)
+		mlx_destroy_window(data->mlx, data->win.ptr);
+	free(data->mlx);
+	exit(0);
+	return (1);
 }

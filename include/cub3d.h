@@ -6,7 +6,7 @@
 /*   By: fcil <fcil@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/10 20:51:11 by fcil              #+#    #+#             */
-/*   Updated: 2022/10/08 16:44:11 by fcil             ###   ########.fr       */
+/*   Updated: 2022/10/09 07:10:37 by fcil             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -109,6 +109,7 @@ typedef struct	s_all
 	double			pos_x;
 	double			pos_y;
 	void			*mlx;
+	int				key_control;
 	t_win			win;
 	t_img			img;
 	t_map			map;
@@ -120,16 +121,17 @@ typedef struct	s_all
 	t_stk			*stk;
 }				t_all;
 
-void	ft_draw(t_all *data);
+void		ft_draw(t_all *data);
 
 //read_files.c
 void		ft_parse(t_all *data, char *strmap);
 
 //utils.c
-void	error(char *str);
-int		ft_spaceskip(char *line, int *i);
-int		ft_extcheck(char *str, char *ext);
-int		ft_atoiskip(char *line, int *i);
+void		error(char *str);
+int			ft_spaceskip(char *line, int *i);
+int			ft_extcheck(char *str, char *ext);
+int			ft_atoiskip(char *line, int *i);
+int			ft_close(t_all *data, int win);
 
 //get_next_line.c
 char		*get_next_line(int fd);
@@ -148,10 +150,17 @@ void		ft_colors(unsigned int *color, char *line, int *i);
 //key.c
 void		ft_rotate(t_all *s, double c);
 void		ft_move(t_all *data, double c);
-int			ft_close(t_all *data, int win);
-int			ft_key(int key, void *arg);
+int			ft_key_hold(int key, void *arg);
+int			ft_key_release(int key, void *arg);
+void		ft_rightleft(t_all *data, double c);
 
 //minimap.c
-void		draw_minimap(t_all *data);
+void		init_minimap(t_all *data);
+void		draw_rectangles(t_all *data);
+void 		draw_lines(t_all *data);
+void		draw_player(t_all *data);
+
+//ft_logic.c
+int			ft_logic(t_all *data);
 
 #endif

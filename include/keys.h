@@ -6,7 +6,7 @@
 /*   By: fcil <fcil@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/03 05:13:04 by fcil              #+#    #+#             */
-/*   Updated: 2022/10/07 16:12:54 by fcil             ###   ########.fr       */
+/*   Updated: 2022/10/09 06:12:44 by fcil             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@
 #  define SPACE 32
 #  define SHIFT 65505
 
-# elif __unix__
+# else
 #  define ESC 53
 #  define W 13
 #  define A 0
@@ -38,5 +38,12 @@
 
 # define TURN 0.05
 # define SPEED 15
+
+# define GO_RIGHT 1
+# define GO_LEFT 2
+# define GO_FORWARD 4
+# define GO_BACKWARD 8
+# define LOOK_RIGHT 16
+# define LOOK_LEFT 32
 
 #endif

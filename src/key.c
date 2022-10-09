@@ -6,7 +6,7 @@
 /*   By: fcil <fcil@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/07 16:11:46 by fcil              #+#    #+#             */
-/*   Updated: 2022/10/08 15:22:53 by fcil             ###   ########.fr       */
+/*   Updated: 2022/10/09 07:07:00 by fcil             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,42 +43,43 @@ void	ft_rightleft(t_all *data, double c)
 		data->pos_y -= c * (data->dir.x * SPEED / 100);
 }
 
-int		ft_close(t_all *data, int win)
+int		ft_key_hold(int key, void *arg)
 {
-	int	i;
-
-	i = 0;
-	while (i < data->map.y)
-		free(data->map.tab[i++]);
-	free(data->map.tab);
-	free(data->tex.n);
-	free(data->tex.s);
-	free(data->tex.e);
-	free(data->tex.w);
-	free(data->tex.i);
-	if (win == 1)
-		mlx_destroy_window(data->mlx, data->win.ptr);
-	free(data->mlx);
-	exit(0);
-	return (1);
-}
-
-int		ft_key(int key, void *arg)
-{
+	printf("\nrel:%d %d\n",key, ((t_all *)arg)->key_control);
 	if (key == ESC)
 		ft_close(arg, 1);
 	else if (key == W)
-		ft_move(arg, 1);
+		((t_all *)arg)->key_control |= GO_FORWARD;
 	else if (key == A)
-		ft_rightleft(arg, -1);
+		((t_all *)arg)->key_control |= GO_LEFT;
 	else if (key == S)
-		ft_move(arg, -1);
+		((t_all *)arg)->key_control |= GO_BACKWARD;
 	else if (key == D)
-		ft_rightleft(arg, 1);
+		((t_all *)arg)->key_control |= GO_RIGHT;
 	else if (key == LEFT)
-		ft_rotate(arg, -1);
+		((t_all *)arg)->key_control |= LOOK_LEFT;
 	else if (key == RIGHT)
-		ft_rotate(arg, 1);
-	ft_draw(arg);
+		((t_all *)arg)->key_control |= LOOK_RIGHT;
+	printf("%d %d\n",key, ((t_all *)arg)->key_control);
+	return (1);
+}
+
+int		ft_key_release(int key, void *arg)
+{
+	printf("\nrel:%d %d\n",key, ((t_all *)arg)->key_control);
+	if (key == W)
+		((t_all *)arg)->key_control &= ~GO_FORWARD;
+	else if (key == A)
+		((t_all *)arg)->key_control &= ~GO_LEFT;
+	else if (key == S)
+		((t_all *)arg)->key_control &= ~GO_BACKWARD;
+	else if (key == D)
+		((t_all *)arg)->key_control &= ~GO_RIGHT;
+	else if (key == LEFT)
+		((t_all *)arg)->key_control &= ~LOOK_LEFT;
+	else if (key == RIGHT)
+		((t_all *)arg)->key_control &= ~LOOK_RIGHT;
+
+	printf("%d %d\n",key, ((t_all *)arg)->key_control);
 	return (1);
 }
