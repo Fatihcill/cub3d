@@ -6,7 +6,7 @@
 /*   By: fcil <fcil@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/03 04:39:04 by fcil              #+#    #+#             */
-/*   Updated: 2022/10/09 17:58:23 by fcil             ###   ########.fr       */
+/*   Updated: 2022/10/09 18:00:02 by fcil             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,7 +41,6 @@ static void	ft_line(t_all *data, char *line)
 	free(line);
 }
 
-//TODO 3-Missing texture / color
 static void	check_map(t_all *data, int len_y)
 {
 	int		i;
