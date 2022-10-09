@@ -6,7 +6,7 @@
 /*   By: fcil <fcil@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/07 16:21:23 by fcil              #+#    #+#             */
-/*   Updated: 2022/10/09 07:10:19 by fcil             ###   ########.fr       */
+/*   Updated: 2022/10/09 14:11:57 by fcil             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -85,7 +85,7 @@ void	draw_rectangles(t_all *data)
 	while (i < data->map.y)
 	{
 		j = 0;
-		while (j < data->map.x)
+		while (data->map.tab[i][j])
 		{
 			if (data->map.tab[i][j] == '1')
 				draw_rectangle(data, j, i, WHITE);

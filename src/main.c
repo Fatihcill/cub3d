@@ -6,16 +6,19 @@
 /*   By: fcil <fcil@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/10 20:50:50 by fcil              #+#    #+#             */
-/*   Updated: 2022/10/09 07:11:20 by fcil             ###   ########.fr       */
+/*   Updated: 2022/10/09 15:22:42 by fcil             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
 
-void	ft_draw(t_all *data)
+void	ft_init_ray(t_all *data)
 {
 	t_ray	ray;
 	t_hit	hit;
+	int		bpp;
+	int		sl;
+	int		end;
 
 	ray.x = 0;
 	ray.y = 0;
@@ -27,7 +30,10 @@ void	ft_draw(t_all *data)
 	hit.d = 0;
 	data->ray = ray;
 	data->hit = hit;
-	//ft_screen(data);
+	data->img.ptr = mlx_new_image(data->mlx, data->win.x, data->win.y);
+	data->img.adr = (unsigned int *)mlx_get_data_addr(data->img.ptr, &bpp, &sl, &end);
+	data->stk = malloc(sizeof(t_stk) * data->win.x);
+
 	//mlx_put_image_to_window(data->mlx, data->win.ptr, data->img.ptr, 0, 0);
 	//free(s->img.ptr);
 	//free(s->img.adr);
@@ -46,13 +52,13 @@ int		ft_cubed(t_all data, char *strmap)
 	printf("%f | %f | %f\n", data.dir.a, data.dir.x, data.dir.y);
 
 	data.win.ptr = mlx_new_window(data.mlx, data.win.x, data.win.y, "cub3D");
-	ft_draw(&data);
+	ft_init_ray(&data);
 	init_minimap(&data);
 
 	mlx_hook(data.win.ptr, 2, 1L<<0, &ft_key_hold, &data);
 	mlx_hook(data.win.ptr, 3, 1L<<1, ft_key_release, &data);
 	mlx_hook(data.win.ptr, 17, 0, &ft_close, &data);
-
+	ft_logic(&data);
 	mlx_loop_hook(data.mlx, ft_logic, &data);
 	mlx_loop(data.mlx);
 	return (1);
@@ -98,7 +104,7 @@ void	ft_init(char *strmap)
 	dir.x = 0;
 	dir.y = 0;
 	minimap.img = img;
-	minimap.map_size = 32;
+	minimap.map_size = 16;
 	data.mlx = NULL;
 	data.pos_x = 0;
 	data.pos_y = 0;

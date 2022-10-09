@@ -6,7 +6,7 @@
 /*   By: fcil <fcil@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/10 20:51:11 by fcil              #+#    #+#             */
-/*   Updated: 2022/10/09 07:10:37 by fcil             ###   ########.fr       */
+/*   Updated: 2022/10/09 15:30:18 by fcil             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,7 @@
 # include "fcntl.h"
 # include "keys.h"
 # include <math.h>
+# include <limits.h>
 
 # define SIZE_X 1080
 # define SIZE_Y 720
@@ -121,8 +122,6 @@ typedef struct	s_all
 	t_stk			*stk;
 }				t_all;
 
-void		ft_draw(t_all *data);
-
 //read_files.c
 void		ft_parse(t_all *data, char *strmap);
 
@@ -162,5 +161,12 @@ void		draw_player(t_all *data);
 
 //ft_logic.c
 int			ft_logic(t_all *data);
+
+//ft_screen.c
+void			ft_ray(t_all *data);
+void			ft_dir(t_all *data);
+void			ft_ver(t_all *data);
+void			ft_hor(t_all *data);
+void			ft_screen(t_all *s);
 
 #endif
