@@ -6,7 +6,7 @@
 /*   By: fcil <fcil@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/09 05:51:55 by fcil              #+#    #+#             */
-/*   Updated: 2022/10/09 15:44:58 by fcil             ###   ########.fr       */
+/*   Updated: 2022/10/09 15:55:12 by fcil             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -109,9 +109,7 @@ void	ft_reset_ray(t_all *data)
 }
 
 int	ft_logic(t_all *data)
-{
-	printf("%d\n", data->key_control);
-	
+{	
 	if (data->key_control & GO_FORWARD)
 		ft_move(data, 1);
 	if (data->key_control & GO_RIGHT)

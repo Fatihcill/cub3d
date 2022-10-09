@@ -6,7 +6,7 @@
 /*   By: fcil <fcil@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/10 20:50:50 by fcil              #+#    #+#             */
-/*   Updated: 2022/10/09 15:22:42 by fcil             ###   ########.fr       */
+/*   Updated: 2022/10/09 15:59:52 by fcil             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,7 +49,6 @@ int		ft_cubed(t_all data, char *strmap)
 	{
 		printf("%s\n",data.map.tab[i]);
 	}
-	printf("%f | %f | %f\n", data.dir.a, data.dir.x, data.dir.y);
 
 	data.win.ptr = mlx_new_window(data.mlx, data.win.x, data.win.y, "cub3D");
 	ft_init_ray(&data);

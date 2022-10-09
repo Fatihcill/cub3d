@@ -6,7 +6,7 @@
 /*   By: fcil <fcil@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/07 16:11:46 by fcil              #+#    #+#             */
-/*   Updated: 2022/10/09 07:07:00 by fcil             ###   ########.fr       */
+/*   Updated: 2022/10/09 15:54:56 by fcil             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,7 +45,6 @@ void	ft_rightleft(t_all *data, double c)
 
 int		ft_key_hold(int key, void *arg)
 {
-	printf("\nrel:%d %d\n",key, ((t_all *)arg)->key_control);
 	if (key == ESC)
 		ft_close(arg, 1);
 	else if (key == W)
@@ -60,13 +59,11 @@ int		ft_key_hold(int key, void *arg)
 		((t_all *)arg)->key_control |= LOOK_LEFT;
 	else if (key == RIGHT)
 		((t_all *)arg)->key_control |= LOOK_RIGHT;
-	printf("%d %d\n",key, ((t_all *)arg)->key_control);
 	return (1);
 }
 
 int		ft_key_release(int key, void *arg)
 {
-	printf("\nrel:%d %d\n",key, ((t_all *)arg)->key_control);
 	if (key == W)
 		((t_all *)arg)->key_control &= ~GO_FORWARD;
 	else if (key == A)
@@ -79,7 +76,5 @@ int		ft_key_release(int key, void *arg)
 		((t_all *)arg)->key_control &= ~LOOK_LEFT;
 	else if (key == RIGHT)
 		((t_all *)arg)->key_control &= ~LOOK_RIGHT;
-
-	printf("%d %d\n",key, ((t_all *)arg)->key_control);
 	return (1);
 }
