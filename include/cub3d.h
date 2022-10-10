@@ -6,7 +6,7 @@
 /*   By: fcil <fcil@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/10 20:51:11 by fcil              #+#    #+#             */
-/*   Updated: 2022/10/09 17:27:05 by fcil             ###   ########.fr       */
+/*   Updated: 2022/10/10 17:58:19 by fcil             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,6 +40,7 @@ typedef struct s_win
 	void			*ptr;
 	int				x;
 	int				y;
+	int				m;
 }				t_win;
 
 typedef struct s_img
@@ -167,6 +168,7 @@ void		draw_player(t_all *data);
 
 //ft_logic.c
 int			ft_logic(t_all *data);
+int			ft_mouse(int x, int y, t_all *data);
 
 //ft_screen.c
 void		ft_screen(t_all *s);

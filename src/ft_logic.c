@@ -6,11 +6,20 @@
 /*   By: fcil <fcil@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/09 05:51:55 by fcil              #+#    #+#             */
-/*   Updated: 2022/10/09 16:47:47 by fcil             ###   ########.fr       */
+/*   Updated: 2022/10/10 17:58:07 by fcil             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
+
+int	ft_mouse(int x, int y, t_all *data)
+{
+	(void)y;
+	if (1 && data->win.m != 10000)
+		ft_rotate(data, (x - data->win.m) / 5);
+	data->win.m = x;
+	return (0);
+}
 
 void	ft_reset_ray(t_all *data)
 {

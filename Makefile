@@ -6,7 +6,7 @@
 #    By: fcil <fcil@student.42.fr>                  +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/07/10 21:28:18 by fcil              #+#    #+#              #
-#    Updated: 2022/10/09 17:07:51 by fcil             ###   ########.fr        #
+#    Updated: 2022/10/10 18:04:13 by fcil             ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -47,21 +47,23 @@ $(MINILIBX):
 $(FT_LIB):
 	@make -C $(FT)
 
-re: fclean all
-
 clean:
 	rm -rf $(OBJS)
-	@-make -C $(MLX) clean
-	@-make -C $(FT) clean
+	@make -C $(MLX) clean
+	@make -C $(FT) clean
 
 fclean: clean
 	rm -rf $(NAME)
-	@-make -C $(MLX) clean
-	@-make -C $(FT) fclean
+	@make -C $(MLX) clean
+	@make -C $(FT) fclean
 
 norminette:
 	norminette src/
 	norminette include/
 	norminette $(FT)
 
+re:
+	@make fclean
+	@make all
+	
 .PHONY: clean run fclean re all norminette

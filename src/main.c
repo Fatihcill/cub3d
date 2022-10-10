@@ -6,7 +6,7 @@
 /*   By: fcil <fcil@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/10 20:50:50 by fcil              #+#    #+#             */
-/*   Updated: 2022/10/09 17:02:43 by fcil             ###   ########.fr       */
+/*   Updated: 2022/10/10 17:57:57 by fcil             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,7 +35,8 @@ static int	ft_cubed(t_all data, char *strmap)
 	init_minimap(&data);
 	mlx_hook(data.win.ptr, 2, 1L << 0, &ft_key_hold, &data);
 	mlx_hook(data.win.ptr, 3, 1L << 1, ft_key_release, &data);
-	mlx_hook(data.win.ptr, 17, 0, &ft_close, &data);
+	mlx_hook(data.win.ptr, 6, 0L, &ft_mouse, &data);
+	mlx_hook(data.win.ptr, 17, 0L, &ft_close, &data);
 	ft_logic(&data);
 	mlx_loop_hook(data.mlx, ft_logic, &data);
 	mlx_loop(data.mlx);
@@ -62,6 +63,7 @@ static void	ft_init2(t_all data, char *strmap)
 	data.map = map;
 	data.tex = tex;
 	data.stk = stk;
+	data.key_control = 0;
 	ft_cubed(data, strmap);
 }
 
@@ -78,6 +80,7 @@ static void	ft_init(char *strmap)
 	img.adr = NULL;
 	win.x = SIZE_X;
 	win.y = SIZE_Y;
+	win.m = 10000;
 	img.fsh = 0;
 	dir.x = 0;
 	dir.y = 0;
