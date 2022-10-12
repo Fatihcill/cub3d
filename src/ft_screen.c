@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_screen.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: fcil <fcil@student.42.fr>                  +#+  +:+       +#+        */
+/*   By: aeser <aeser@42kocaeli.com.tr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/09 04:29:12 by fcil              #+#    #+#             */
-/*   Updated: 2022/10/09 17:06:21 by fcil             ###   ########.fr       */
+/*   Updated: 2022/10/12 19:47:44 by aeser            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,9 +19,9 @@ static unsigned int	ft_pixel(t_all *s, double i)
 	if (floor(s->hit.y) == s->hit.y)
 	{
 		index = 64 * floor(64 * i) + 64 * (s->hit.x - floor(s->hit.x));
-		if (s->ray.w == 1)
+		if (s->ray.h == 1)
 			return (s->tex.s[index]);
-		else if (s->ray.w == 0)
+		else if (s->ray.h == 0)
 			return (s->tex.n[index]);
 	}
 	else if (floor(s->hit.x) == s->hit.x)
@@ -77,7 +77,6 @@ static void	ft_stock(t_all *s)
 {
 	s->stk[s->ray.i].x = s->hit.x;
 	s->stk[s->ray.i].y = s->hit.y;
-	s->stk[s->ray.i].d = s->hit.d;
 }
 
 void	ft_screen(t_all *s)

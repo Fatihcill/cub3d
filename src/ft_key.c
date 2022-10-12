@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   key.c                                              :+:      :+:    :+:   */
+/*   ft_key.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: fcil <fcil@student.42.fr>                  +#+  +:+       +#+        */
+/*   By: aeser <aeser@42kocaeli.com.tr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/07 16:11:46 by fcil              #+#    #+#             */
-/*   Updated: 2022/10/09 16:25:57 by fcil             ###   ########.fr       */
+/*   Updated: 2022/10/12 19:50:47 by aeser            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,13 +14,8 @@
 
 void	ft_rotate(t_all *data, double c)
 {
-	double	dist;
-
 	data->dir.x = data->dir.x * cos(c * TURN) - data->dir.y * sin(c * TURN);
 	data->dir.y = data->dir.y * cos(c * TURN) + data->dir.x * sin(c * TURN);
-	dist = hypot(data->dir.x, data->dir.y);
-	data->dir.x /= dist;
-	data->dir.y /= dist;
 }
 
 void	ft_move(t_all *data, double c)

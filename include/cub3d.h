@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub3d.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: fcil <fcil@student.42.fr>                  +#+  +:+       +#+        */
+/*   By: aeser <aeser@42kocaeli.com.tr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/10 20:51:11 by fcil              #+#    #+#             */
-/*   Updated: 2022/10/10 17:58:19 by fcil             ###   ########.fr       */
+/*   Updated: 2022/10/12 19:45:27 by aeser            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -72,7 +72,6 @@ typedef struct s_dir
 {
 	double			x;
 	double			y;
-	double			a;
 }				t_dir;
 
 typedef struct s_ray
@@ -81,7 +80,7 @@ typedef struct s_ray
 	double			y;
 	int				i;
 	double			v;
-	double			w;
+	double			h;
 }				t_ray;
 
 typedef struct s_hit
@@ -95,7 +94,6 @@ typedef struct s_stk
 {
 	double			x;
 	double			y;
-	double			d;
 }				t_stk;
 
 typedef struct s_minimap
