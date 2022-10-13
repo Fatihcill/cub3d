@@ -6,7 +6,7 @@
 /*   By: fcil <fcil@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/10 20:50:50 by fcil              #+#    #+#             */
-/*   Updated: 2022/10/13 13:40:09 by fcil             ###   ########.fr       */
+/*   Updated: 2022/10/13 19:43:27 by fcil             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,25 +26,26 @@ void	init_minimap(t_all *data)
 			data->minimap.img.ptr, &bpp, &sl, &end);
 }
 
-static int	ft_cubed(t_all data, char *strmap)
+static int	ft_cubed(t_all *data, char *strmap)
 {
-	data.mlx = mlx_init();
-	ft_parse(&data, strmap);
-	data.win.ptr = mlx_new_window(data.mlx, data.win.x, data.win.y, "cub3D");
-	ft_init_ray(&data);
-	init_minimap(&data);
+	data->mlx = mlx_init();
+	ft_parse(data, strmap);
+	data->win.ptr = mlx_new_window(data->mlx,
+			data->win.x, data->win.y, "cub3D");
+	ft_init_ray(data);
+	init_minimap(data);
 	mlx_mouse_hide();
-	mlx_hook(data.win.ptr, 2, 1L << 0, &ft_key_hold, &data);
-	mlx_hook(data.win.ptr, 3, 1L << 1, ft_key_release, &data);
-	mlx_hook(data.win.ptr, 6, 0L, &ft_mouse, &data);
-	mlx_hook(data.win.ptr, 17, 0L, &ft_close, &data);
-	ft_logic(&data);
-	mlx_loop_hook(data.mlx, ft_logic, &data);
-	mlx_loop(data.mlx);
+	mlx_hook(data->win.ptr, 2, 1L << 0, &ft_key_hold, data);
+	mlx_hook(data->win.ptr, 3, 1L << 1, ft_key_release, data);
+	mlx_hook(data->win.ptr, 6, 0L, &ft_mouse, data);
+	mlx_hook(data->win.ptr, 17, 0L, &ft_close, data);
+	ft_logic(data);
+	mlx_loop_hook(data->mlx, ft_logic, data);
+	mlx_loop(data->mlx);
 	return (1);
 }
 
-static void	ft_init2(t_all data, char *strmap)
+static void	ft_init2(t_all *data, char *strmap)
 {
 	t_map	map;
 	t_tex	tex;
@@ -60,10 +61,10 @@ static void	ft_init2(t_all data, char *strmap)
 	map.y = 0;
 	tex.c = NONE;
 	tex.f = NONE;
-	data.map = map;
-	data.tex = tex;
-	data.stk = stk;
-	data.key_control = 0;
+	data->map = map;
+	data->tex = tex;
+	data->stk = stk;
+	data->key_control = 0;
 	ft_cubed(data, strmap);
 }
 
@@ -92,7 +93,7 @@ static void	ft_init(char *strmap)
 	data.img = img;
 	data.dir = dir;
 	data.minimap = minimap;
-	ft_init2(data, strmap);
+	ft_init2(&data, strmap);
 }
 
 int	main(int ac, char **av)

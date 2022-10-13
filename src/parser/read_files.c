@@ -6,7 +6,7 @@
 /*   By: fcil <fcil@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/03 04:39:04 by fcil              #+#    #+#             */
-/*   Updated: 2022/10/13 13:31:00 by fcil             ###   ########.fr       */
+/*   Updated: 2022/10/13 19:43:42 by fcil             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@ static void	ft_line(t_all *data, char *line)
 	if ((line[tmp] == '1' || line[tmp] == '0') && line[tmp] != '\0')
 	{
 		if (line[tmp] == '0')
-			error("Error: Map isn't surrounded by walls");
+			error("Error: Maps isn't surrounded by walls");
 		ft_map(data, line, &i);
 	}
 	else if (line[tmp] == 'N' && line[tmp + 1] == 'O' && line[tmp + 2] == ' ')

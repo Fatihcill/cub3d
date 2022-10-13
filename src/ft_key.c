@@ -6,7 +6,7 @@
 /*   By: fcil <fcil@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/07 16:11:46 by fcil              #+#    #+#             */
-/*   Updated: 2022/10/13 12:56:46 by fcil             ###   ########.fr       */
+/*   Updated: 2022/10/13 18:45:57 by fcil             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,7 +46,7 @@ void	ft_rightleft(t_all *data, double c)
 int	ft_key_hold(int key, void *arg)
 {
 	if (key == ESC)
-		ft_close(arg, 1);
+		ft_close(arg);
 	else if (key == W)
 		((t_all *)arg)->key_control |= GO_FORWARD;
 	else if (key == A)

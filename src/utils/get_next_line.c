@@ -6,7 +6,7 @@
 /*   By: fcil <fcil@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/26 18:33:28 by fcil              #+#    #+#             */
-/*   Updated: 2022/10/09 17:02:20 by fcil             ###   ########.fr       */
+/*   Updated: 2022/10/13 20:52:06 by fcil             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ static char	*str_append_chr(char *str, char append)
 
 	if (str == NULL)
 		return (NULL);
-	new_str = malloc(ft_strlen(str) + 2);
+	new_str = ft_calloc(ft_strlen(str) + 2, sizeof(char));
 	if (new_str != NULL)
 	{
 		i = 0;
@@ -41,7 +41,7 @@ char	*get_next_line(int fd)
 	char	buffer;
 	int		check;
 
-	line = ft_strdup("");
+	line = (char *)ft_calloc(1, sizeof(char));
 	if (line == NULL)
 		return (NULL);
 	check = read(fd, &buffer, 1);

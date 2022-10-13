@@ -6,7 +6,7 @@
 /*   By: fcil <fcil@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/10 20:51:11 by fcil              #+#    #+#             */
-/*   Updated: 2022/10/13 14:23:27 by fcil             ###   ########.fr       */
+/*   Updated: 2022/10/13 20:18:30 by fcil             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -130,7 +130,7 @@ void		error(char *str);
 int			ft_spaceskip(char *line, int *i);
 int			ft_extcheck(char *str, char *ext);
 int			ft_atoiskip(char *line, int *i);
-int			ft_close(t_all *data, int win);
+int			ft_close(t_all *data);
 
 //get_next_line.c
 char		*get_next_line(int fd);
@@ -168,5 +168,4 @@ int			ft_mouse(int x, int y, t_all *data);
 
 //ft_screen.c
 void		ft_screen(t_all *s);
-
 #endif
