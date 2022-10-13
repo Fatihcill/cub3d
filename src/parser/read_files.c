@@ -6,7 +6,7 @@
 /*   By: fcil <fcil@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/03 04:39:04 by fcil              #+#    #+#             */
-/*   Updated: 2022/10/09 18:00:02 by fcil             ###   ########.fr       */
+/*   Updated: 2022/10/13 13:31:00 by fcil             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,7 +51,6 @@ static void	check_map(t_all *data, int len_y)
 	i = -1;
 	while (map[++i])
 	{
-		puts(map[i]);
 		j = -1;
 		while (map[i][++j])
 		{
@@ -85,6 +84,7 @@ void	ft_parse(t_all *data, char *strmap)
 		ft_line(data, line);
 		line = get_next_line(fd);
 	}
+	free(line);
 	close(fd);
 	ft_pos(data);
 	check_map(data, data->map.y - 1);

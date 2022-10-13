@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: aeser <aeser@42kocaeli.com.tr>             +#+  +:+       +#+         #
+#    By: fcil <fcil@student.42.fr>                  +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/07/10 21:28:18 by fcil              #+#    #+#              #
-#    Updated: 2022/10/12 19:52:13 by aeser            ###   ########.fr        #
+#    Updated: 2022/10/13 13:32:46 by fcil             ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -31,7 +31,7 @@ SRCS		:= $(shell find $(SRC_DIR) -type f -name "*.c")
 OBJS		= $(SRCS:.c=.o)
 FT		= ./libft/
 FT_LIB	= ./libft/libft.a
-CFLAGS	  = -Wall -Werror -Wextra -I./include -I $(MLX) -I $(FT) -ggdb
+CFLAGS	  = -Wall -Wextra -I./include -I $(MLX) -I $(FT) -glldb
 
 all: $(NAME)
 

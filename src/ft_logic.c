@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_logic.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: aeser <aeser@42kocaeli.com.tr>             +#+  +:+       +#+        */
+/*   By: fcil <fcil@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/09 05:51:55 by fcil              #+#    #+#             */
-/*   Updated: 2022/10/12 19:45:27 by aeser            ###   ########.fr       */
+/*   Updated: 2022/10/13 13:36:31 by fcil             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,8 +15,12 @@
 int	ft_mouse(int x, int y, t_all *data)
 {
 	(void)y;
-	if (1 && data->win.m != 10000)
-		ft_rotate(data, (x - data->win.m) / 5);
+	if (x < 0)
+		mlx_mouse_move(data->win.ptr, data->win.x, y);
+	else if (x > data->win.x)
+		mlx_mouse_move(data->win.ptr, 0, y);
+	if (1 && data->win.m != INT_MAX)
+		ft_rotate(data, (x - data->win.m) / 8.6f);
 	data->win.m = x;
 	return (0);
 }

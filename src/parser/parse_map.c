@@ -6,7 +6,7 @@
 /*   By: fcil <fcil@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/07 02:53:34 by fcil              #+#    #+#             */
-/*   Updated: 2022/10/09 17:51:19 by fcil             ###   ########.fr       */
+/*   Updated: 2022/10/13 14:44:25 by fcil             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,7 +62,10 @@ void	ft_map(t_all *data, char *line, int *i)
 	char	**tmp;
 	int		j;
 
-	tmp = ft_calloc((data->map.y + 2), sizeof(char *));
+	if (data->map.tab != NULL)
+		free(data->map.tab);
+	tmp = malloc((data->map.y + 2) * sizeof(char *));
+	printf("%d\n", data->map.y);
 	if (!tmp)
 		error("Error : Malloc fail (map table)");
 	j = -1;

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub3d.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: aeser <aeser@42kocaeli.com.tr>             +#+  +:+       +#+        */
+/*   By: fcil <fcil@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/10 20:51:11 by fcil              #+#    #+#             */
-/*   Updated: 2022/10/12 19:45:27 by aeser            ###   ########.fr       */
+/*   Updated: 2022/10/13 14:23:27 by fcil             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,7 +47,6 @@ typedef struct s_img
 {
 	void			*ptr;
 	unsigned int	*adr;
-	int				fsh;
 }				t_img;
 
 typedef struct s_map
@@ -63,7 +62,6 @@ typedef struct s_tex
 	unsigned int	*s;
 	unsigned int	*e;
 	unsigned int	*w;
-	unsigned int	*i;
 	unsigned int	c;
 	unsigned int	f;
 }				t_tex;
