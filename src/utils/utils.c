@@ -57,16 +57,20 @@ int	ft_atoiskip(char *line, int *i)
 int	ft_close(t_all *data)
 {
 	int	i;
+	#ifdef __linux__
+		mlx_mouse_show(data->mlx, data->win.ptr);
+	#else
+		mlx_mouse_show();
+		free(data->tex.n);
+		free(data->tex.s);
+		free(data->tex.e);
+		free(data->tex.w);
 
-	mlx_mouse_show();
+	#endif
 	i = -1;
 	while (++i < data->map.y)
 		free(data->map.tab[i]);
 	free(data->map.tab);
-	free(data->tex.n);
-	free(data->tex.s);
-	free(data->tex.e);
-	free(data->tex.w);
 	free(data->stk);
 	free(data->img.ptr);
 	free(data->minimap.img.ptr);

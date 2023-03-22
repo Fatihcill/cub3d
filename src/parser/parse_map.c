@@ -61,9 +61,10 @@ void	ft_map(t_all *data, char *line, int *i)
 {
 	char	**tmp;
 	int		j;
-
-	if (data->map.tab != NULL)
-		free(data->map.tab);
+	#ifndef __linux__
+		if (data->map.tab != NULL)
+			free(data->map.tab);
+	#endif
 	tmp = malloc((data->map.y + 2) * sizeof(char *));
 	if (!tmp)
 		error("Error : Malloc fail (map table)");

@@ -15,10 +15,18 @@
 int	ft_mouse(int x, int y, t_all *data)
 {
 	(void)y;
+
+	# ifdef __linux__
+	if (x < 0)
+		mlx_mouse_move(data->mlx, data->win.ptr, data->win.x, y);
+	else if (x > data->win.x)
+		mlx_mouse_move(data->mlx, data->win.ptr, 0, y);
+	# else
 	if (x < 0)
 		mlx_mouse_move(data->win.ptr, data->win.x, y);
 	else if (x > data->win.x)
 		mlx_mouse_move(data->win.ptr, 0, y);
+	#endif
 	if (1 && data->win.m != INT_MAX)
 		ft_rotate(data, (x - data->win.m) / 8.6f);
 	data->win.m = x;

@@ -31,7 +31,7 @@ SRCS		:= $(shell find $(SRC_DIR) -type f -name "*.c")
 OBJS		= $(SRCS:.c=.o)
 FT		= ./libft/
 FT_LIB	= ./libft/libft.a
-CFLAGS	  = -Wall -Wextra -I./include -I $(MLX) -I $(FT) -glldb
+CFLAGS	  = -Wall -Wextra -I./include -I $(MLX) -I $(FT) -g
 
 all: $(NAME)
 

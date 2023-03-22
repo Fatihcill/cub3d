@@ -34,7 +34,11 @@ static int	ft_cubed(t_all *data, char *strmap)
 			data->win.x, data->win.y, "cub3D");
 	ft_init_ray(data);
 	init_minimap(data);
-	mlx_mouse_hide();
+	#ifdef __linux__
+		mlx_mouse_hide(data->mlx, data->win.ptr);
+	#else
+		mlx_mouse_hide();
+	#endif
 	mlx_hook(data->win.ptr, 2, 1L << 0, &ft_key_hold, data);
 	mlx_hook(data->win.ptr, 3, 1L << 1, ft_key_release, data);
 	mlx_hook(data->win.ptr, 6, 0L, &ft_mouse, data);
